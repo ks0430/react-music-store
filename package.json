@@ -30,6 +30,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
     "jest": "^23.6.0"
   }
 }
