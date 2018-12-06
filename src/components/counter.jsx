@@ -27,6 +27,7 @@ export default class Counter extends Component {
 
     return (
       <div>
+        {this.props.children}
         <span className={classes}>{this.formatCount()}</span>
 
         <button
