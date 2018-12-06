@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 
 export default class Counter extends Component {
-  state = {
-    value: this.props.counter.value
-  };
+  componentDidUpdate(prevProps, prevState) {
+    console.log("prevPros", prevProps);
+    console.log("prevState", prevState);
+    if (prevProps.counter.value !== this.props.counter.value) {
+      // Ajax call and get new data from the server
+    }
+  }
+
+  componentWillUnmount() {
+    console.log("Counter - Unmount");
+  }
 
   renderTags() {
     if (this.state.tags.length === 0) return <p>There no tags!</p>;
