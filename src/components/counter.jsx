@@ -25,6 +25,7 @@ export default class Counter extends Component {
     let classes = this.getBadgeClasses();
     const { id } = this.props.counter;
 
+    console.log("counter - rendered");
     return (
       <div>
         {this.props.children}
