@@ -70,6 +70,19 @@ const combined2 = [...first, "a", ...second, "b"];
 
 ### Modules
 
-###
+### Zen code
+
+`table.table>thead>tr>td*4`
+
+### Mounting face in react
+
+`constructor()` initialized data. this.setState() can not be used in constructor.
+`componentDidMount()`
+`componentWillUnmount()` when the element is deleted from react virtual tree.
+`componentDidUpdate(prevState,curState)`
+rendered recursively.
+
+simple complenent haven't life circle hook.
+because not extends from component.
 
 - import from auto name - dependencies in package json.

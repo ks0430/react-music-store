@@ -52,6 +52,15 @@ class ShoppingCart extends Component {
     this.setState({ counters });
   };
 
+  handleDecrement = counter => {
+    if (counter.value === 0) return;
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value--;
+    this.setState({ counters });
+  };
+
   render() {
     console.log("App - Rendered");
 
@@ -64,6 +73,7 @@ class ShoppingCart extends Component {
           <Counters
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
             onDelete={this.handleDelete}
             counters={this.state.counters}
           />

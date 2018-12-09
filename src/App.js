@@ -5,7 +5,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentComponent: null,
+      currentComponent: <Movies />,
       components: {
         ShoppingCart: <ShoppingCart />,
         Movies: <Movies />
@@ -22,15 +22,16 @@ class App extends Component {
   classes = () => ({
     ul: {
       listStyleType: "none",
-      padding: "1rem 3rem",
-      backgroundColor: "rgb(250,250,250)"
+      padding: "1rem 5rem",
+      backgroundColor: "rgb(250,250,250)",
+      overflow: "hidden"
     },
     li: {
-      display: "inline",
+      float: "left",
       margin: "0 0.3rem"
     },
     container: {
-      padding: "1rem 10rem"
+      padding: "1rem 15rem"
     }
   });
 
