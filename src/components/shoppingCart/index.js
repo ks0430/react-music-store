@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Counters } from "./counter";
-import { NavBar } from "./navbar";
+import Counters from "./counters";
+import NavBar from "./navbar";
 
 class ShoppingCart extends Component {
   state = {
@@ -24,7 +24,7 @@ class ShoppingCart extends Component {
   handleDelete = counterId => {
     const counters = this.state.counters.filter(c => c.id !== counterId);
     this.setState({ counters }); // key and value are the same, use this format
-    console.log("Event habdler called", counterId);
+    // console.log("Event habdler called", counterId);
   };
 
   handleReset = () => {

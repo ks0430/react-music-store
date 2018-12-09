@@ -1,8 +1,63 @@
 import React, { Component } from "react";
-import { sho } from "./components/shoppingCart";
+import ShoppingCart from "./components/shoppingCart";
+import Movies from "./components/movies";
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentComponent: null,
+      components: {
+        ShoppingCart: <ShoppingCart />,
+        Movies: <Movies />
+      }
+    };
+  }
+
+  handleComponentToggle = component => {
+    this.setState({
+      currentComponent: component
+    });
+  };
+
+  classes = () => ({
+    ul: {
+      listStyleType: "none",
+      padding: "1rem 3rem",
+      backgroundColor: "rgb(250,250,250)"
+    },
+    li: {
+      display: "inline",
+      margin: "0 0.3rem"
+    },
+    container: {
+      padding: "1rem 10rem"
+    }
+  });
+
   render() {
-    return <React.Fragment />;
+    const classes = this.classes();
+    return (
+      <React.Fragment>
+        <ul style={classes.ul}>
+          {Object.keys(this.state.components).map(key => {
+            return (
+              <li key={key} style={classes.li}>
+                <button
+                  className="btn btn-dark"
+                  onClick={() =>
+                    this.handleComponentToggle(this.state.components[key])
+                  }
+                >
+                  {key}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div style={classes.container}>{this.state.currentComponent}</div>
+      </React.Fragment>
+    );
   }
 }
 

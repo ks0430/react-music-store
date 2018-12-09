@@ -5,7 +5,7 @@ import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 
 // This is for js basic
-require("./jsBasic/jsBasic");
+// require("./jsBasic/jsBasic");
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
