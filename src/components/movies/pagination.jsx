@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import _ from "lodash";
+import PropTypes from "prop-types";
 
 class Pagination extends Component {
   state = {};
@@ -29,5 +30,12 @@ class Pagination extends Component {
     );
   }
 }
+
+Pagination.propTypes = {
+  itemsCount: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func
+};
 
 export default Pagination;
