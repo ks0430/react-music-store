@@ -86,3 +86,49 @@ simple complenent haven't life circle hook.
 because not extends from component.
 
 - import from auto name - dependencies in package json.
+
+### Section-5 Pagination Filtering Sorting
+
+`Math.ceil()` : get the ceiling number of a float variable.
+
+**lodash:**
+lodash is a famous js library that gives a bunch of easy use js functions.
+To use lodash, first install lodash package.
+
+```
+npm install lodash
+```
+
+second import lodash function.
+
+```
+import _ from 'lodash'
+```
+
+It is also called underscore.
+
+Some examples:
+
+```
+_.range(1, maxValue+1).map( i =>{
+  console.log(i);
+})
+
+//equals
+
+for(let i = 1, i < maxValue, i++){
+  console.log(i);
+}
+```
+
+\_.range() will return an array that like[1,2,3,4...,maxValue]
+
+```
+_(items).slice(startIndex).take(pageSize).value()
+```
+
+Fist pack items to lodash container, and this will give array prototype functions, can use chain function.
+
+At last return value() will create the new array.
+
+Like substring, take part array. [2,3,4,5]
