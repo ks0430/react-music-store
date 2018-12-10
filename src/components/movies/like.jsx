@@ -6,7 +6,9 @@ class Like extends Component {
 
   render() {
     const { onToggle } = this.props;
-    console.log(onToggle);
+    let classes = "fa-heart fa";
+    if (this.state.isOn) classes += "s";
+    else classes += "r";
     return (
       <p
         href="/"
@@ -16,11 +18,7 @@ class Like extends Component {
           if (onToggle !== undefined) onToggle(isOn);
         }}
       >
-        {this.state.isOn ? (
-          <i className="fas fa-heart" />
-        ) : (
-          <i className="far fa-heart" />
-        )}
+        <i className={classes} style={{ cursor: "pointer" }} />
       </p>
     );
   }

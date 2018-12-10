@@ -62,7 +62,7 @@ const movies = [
   {
     _id: "5b21ca3eeb7f6fbccd471821",
     title: "The Avengers",
-    genre: { _id: "5b21ca3eeb7f6fbccd471818", name: "Action" },
+    genre: { _id: "ca3eeb7f6fbccd471818", name: "Action" },
     numberInStock: 7,
     dailyRentalRate: 3.5
   }
@@ -87,7 +87,7 @@ export function saveMovie(movie) {
     movieInDb._id = Date.now();
     movies.push(movieInDb);
   }
-
+  console.log(movieInDb);
   return movieInDb;
 }
 

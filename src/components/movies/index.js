@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getMovies } from "../../services/fakeMovieService";
+import { getMovies, saveMovie } from "../../services/fakeMovieService";
 import Like from "./like";
 class Movies extends Component {
   state = {
@@ -33,17 +33,26 @@ class Movies extends Component {
           </thead>
           <tbody>
             {this.state.movies.map(movie => {
-              console.log(movie);
               return (
                 <tr key={movie._id}>
-                  <td>{movie.Title}</td>
+                  <td>{movie.title}</td>
                   <td>{movie.genre.name}</td>
                   <td>{movie.numberInStock}</td>
                   <td>{movie.dailyRentalRate}</td>
                   <td>
                     <Like
-                      isOn
-                      onToggle={isOn => console.log("Call back:" + isOn)}
+                      isOn={movie.liked}
+                      onToggle={isOn => {
+                        const mvs = [...this.state.movies];
+                        let index = mvs.indexOf(movie);
+                        const mv = { ...movie, liked: isOn };
+                        // console.log("recreate mv", mv);
+                        mvs[index] = mv;
+                        // saveMovie(mv);
+                        this.setState({
+                          movies: mvs
+                        });
+                      }}
                     />
                   </td>
                   <td>
