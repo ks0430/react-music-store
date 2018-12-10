@@ -6,7 +6,16 @@ class Movies extends Component {
     movies: getMovies()
   };
 
-  handleLikeToggle = () => {};
+  handleLike = movie => {
+    const movies = [...this.state.movies];
+    let index = movies.indexOf(movie);
+    movies[index].liked = !movies[index].liked;
+    console.log("recreate movie", movie);
+    // saveMovie(movie);
+    this.setState({
+      movies: movies
+    });
+  };
 
   handleDelete = movie => {
     const movies = this.state.movies.filter(m => m._id !== movie._id);
@@ -41,18 +50,8 @@ class Movies extends Component {
                   <td>{movie.dailyRentalRate}</td>
                   <td>
                     <Like
-                      isOn={movie.liked}
-                      onToggle={isOn => {
-                        const mvs = [...this.state.movies];
-                        let index = mvs.indexOf(movie);
-                        const mv = { ...movie, liked: isOn };
-                        // console.log("recreate mv", mv);
-                        mvs[index] = mv;
-                        // saveMovie(mv);
-                        this.setState({
-                          movies: mvs
-                        });
-                      }}
+                      liked={movie.liked}
+                      onToggle={() => this.handleLike(movie)}
                     />
                   </td>
                   <td>

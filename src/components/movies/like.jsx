@@ -1,23 +1,12 @@
 import React, { Component } from "react";
 class Like extends Component {
-  state = {
-    isOn: this.props.isOn
-  };
-
   render() {
     const { onToggle } = this.props;
     let classes = "fa-heart fa";
-    if (this.state.isOn) classes += "s";
+    if (this.props.liked) classes += "s";
     else classes += "r";
     return (
-      <p
-        href="/"
-        onClick={() => {
-          const isOn = !this.state.isOn;
-          this.setState({ isOn });
-          if (onToggle !== undefined) onToggle(isOn);
-        }}
-      >
+      <p href="/" onClick={onToggle}>
         <i className={classes} style={{ cursor: "pointer" }} />
       </p>
     );
