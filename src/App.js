@@ -40,7 +40,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <ul style={classes.ul}>
-          {Object.keys(this.state.components).map(key => {
+          {Object.keys(this.state.components).map((key, i) => {
             return (
               <li key={key} style={classes.li}>
                 <button
