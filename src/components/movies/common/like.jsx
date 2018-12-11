@@ -1,8 +1,7 @@
 import React from "react";
-const Like = props => {
-  const { onToggle } = props;
+const Like = ({ onToggle, liked }) => {
   let classes = "fa-heart fa";
-  if (props.liked) classes += "s";
+  if (liked) classes += "s";
   else classes += "r";
   return (
     <p href="/" onClick={onToggle}>

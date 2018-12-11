@@ -1,17 +1,19 @@
 import React, { Component } from "react";
 import ShoppingCart from "./components/shoppingCart";
 import Movies from "./components/movies";
+import RouterDemo from "./components/router";
+
+import "./css/app.css";
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      currentComponent: <Movies />,
-      components: {
-        ShoppingCart: <ShoppingCart />,
-        Movies: <Movies />
-      }
-    };
-  }
+  state = {
+    currentComponent: <Movies />
+  };
+
+  components = {
+    ShoppingCart: <ShoppingCart />,
+    Movies: <Movies />,
+    Router: <RouterDemo />
+  };
 
   handleComponentToggle = component => {
     this.setState({
@@ -19,44 +21,27 @@ class App extends Component {
     });
   };
 
-  classes = () => ({
-    ul: {
-      listStyleType: "none",
-      padding: "1rem 5rem",
-      backgroundColor: "rgb(250,250,250)",
-      overflow: "hidden"
-    },
-    li: {
-      float: "left",
-      margin: "0 0.3rem"
-    },
-    container: {
-      padding: "1rem 15rem"
-    }
-  });
-
   render() {
-    const classes = this.classes();
+    const components = this.components;
     return (
       <React.Fragment>
-        <ul style={classes.ul}>
-          {Object.keys(this.state.components).map((key, i) => {
-            return (
-              <li key={key} style={classes.li}>
-                <button
-                  className="btn btn-dark"
-                  onClick={() =>
-                    this.handleComponentToggle(this.state.components[key])
-                  }
-                >
-                  {key}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-
-        <div style={classes.container}>{this.state.currentComponent}</div>
+        <div className="appStyle">
+          <ul>
+            {Object.keys(components).map(key => {
+              return (
+                <li key={key}>
+                  <button
+                    className="btn btn-dark"
+                    onClick={() => this.handleComponentToggle(components[key])}
+                  >
+                    {key}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="_container">{this.state.currentComponent}</div>
       </React.Fragment>
     );
   }

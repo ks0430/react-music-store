@@ -299,5 +299,22 @@ This can't work.
 Use `_.get()` will get the nested property in object without error.
 
 ```
+_.get(item, column.path); // This will return item.genre.name and without undefined error
+```
 
+**14 - modified key with two more parametres**
+This will dertermine the key in which row and whick column, if the name of column is not exsit, then use another one.
+
+```
+createKey = (item, column) => {
+  return item._id + (column.path + column.key);
+};
+```
+
+## Router
+
+### Install react router
+
+```
+npm i react-router-dom
 ```
