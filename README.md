@@ -318,3 +318,121 @@ createKey = (item, column) => {
 ```
 npm i react-router-dom
 ```
+
+### Basic
+
+**Wrap content in `<BrowserRouter>`**
+
+```
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
+```
+
+This will record all history and pass to children.
+
+**Use Route component**
+
+```
+<Switch>
+  <Route path="/products" component={Products} />
+  <Route path="/posts" component={Posts} />
+  <Route path="/" component={Home} />
+</Switch>
+```
+
+- `<Switch>` will choose only one route, order from most specific one to most general one.
+- `exact` property will not match other route.
+
+**Use link - prevent full reload**
+
+- `<a>` tag will reload the full page and reload all js & css assets
+- `<Link>` tag will only update the components that you need.
+
+```
+<div>
+  <Link to="/products">Products</Link>
+  <Link to="/posts">Posts</Link>
+  <Link to="/">Home</Link>
+</div>
+```
+
+How Link works?
+Link warp an `<a>` element, and prevent it from default achieving, just refresh the url and load new component.
+
+**Route injection**
+`<Route>` component will inject `history`, `location` and `match` props to components. It can be view in chrome react dev.
+
+**Route pass props**
+
+Props contains `history` `location` and `match`, use spread syntax to pass separatly.
+
+```
+<Route
+  path="/products"
+  component={props => <Nav title="Products" {...props} />}
+/>
+```
+
+**URL parameters**
+
+```
+<Switch>
+  <Route path="/products/:id" component={ProductDetails} />
+  <Route path="/products" component={Products} />
+  <Route path="/posts/:year/:month" component={Posts} />
+  <Route path="/" component={Home} />
+</Switch>
+```
+
+`:parameter` will inject parameter from url to props, it will appear in `match.params`
+
+**Optional parameters**
+
+```
+ <Route path="/posts/:year?/:month?" component={Posts} />
+```
+
+This syntax is from regular expression.
+
+**Query string: extract url options**
+
+Options in url - query string
+
+```
+http://localhost:3000/posts/22/33?sortBy=newest&approved=true
+```
+
+React extract it in location property, but stored only in string.
+
+```
+search:"?options=target"
+```
+
+install a package: `query-string`
+
+```
+npm i query-string@6.1.0
+```
+
+**Redirect**
+
+If no page found, use `Redirect` on the bottom of the route component.
+
+```
+ <Redirect to="/not-found" />
+```
+
+Redirect one page to another.
+
+```
+  <Redirect from="/messages" to="posts" />
+```
+
+**CLick to another page**
+
+`push`: have history, next page
+`replace`: no history, change current page directly
