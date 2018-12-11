@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Like from "./common/like";
-import TableHeader from "./common/tableHeader";
-import TableBody from "./common/tableBody";
+import { Table } from "./common/table";
 
 class MovieTable extends Component {
   columns = [
@@ -30,33 +29,17 @@ class MovieTable extends Component {
     }
   ];
 
-  raiseSort = path => {
-    console.log(path);
-    const sortColumn = { ...this.props.sortColumn };
-    if (sortColumn.path === path) {
-      console.log("Reverse");
-      sortColumn.order = sortColumn.order === "asc" ? "desc" : "asc";
-    } else {
-      sortColumn.order = "asc";
-      sortColumn.path = path;
-    }
-
-    this.props.onSort(sortColumn);
-  };
-
   render() {
     const { movies, sortColumn, onSort } = this.props;
 
     return (
       <div>
-        <table className="table">
-          <TableHeader
-            columns={this.columns}
-            sortColumn={sortColumn}
-            onSort={onSort}
-          />
-          <TableBody data={movies} columns={this.columns} />
-        </table>
+        <Table
+          columns={this.columns}
+          sortColumn={sortColumn}
+          onSort={onSort}
+          data={movies}
+        />
       </div>
     );
   }
