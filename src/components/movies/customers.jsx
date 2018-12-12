@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import Navbar from "./navigation";
 
-export default class MovieDemo extends Component {
+export default class Customers extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <h1>Customer</h1>
       </div>
     );
   }

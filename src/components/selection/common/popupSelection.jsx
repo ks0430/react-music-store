@@ -2,7 +2,7 @@ import React from "react";
 import "../../../css/app.css";
 import { Link, Route } from "react-router-dom";
 import ShoppingCart from "../../../components/shoppingCart";
-import Movies from "../../../components/movies";
+import Movies from "../../movies/movies";
 import RouterDemo from "../../../components/router";
 
 export const PopupSelection = props => {

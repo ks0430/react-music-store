@@ -436,3 +436,61 @@ Redirect one page to another.
 
 `push`: have history, next page
 `replace`: no history, change current page directly
+
+## Hotkeys
+
+### React
+
+| Hotkey          | Description                              |
+| --------------- | ---------------------------------------- |
+| `imr` + `tab`   | import React from 'react'                |
+| `imrc` + `tab`  | import React, { Component } from 'react' |
+| `redux` + `tab` | import { connect } from 'react-redux'    |
+
+#### Stateless component
+
+`rfc` + `tab`
+
+```
+import React from 'react'
+
+export default function $1() {
+  return <div>$0</div>
+}
+```
+
+`rfce` + `tab`
+
+```
+import React from 'react'
+
+function $1() {
+  return <div>$0</div>
+}
+
+export default $1
+```
+
+`rafc` + `tab`
+
+```
+import React from 'react'
+
+const $1 = () => {
+  return <div>$0</div>
+}
+
+export default $1
+```
+
+`rafce` + `tab`
+
+```
+import React from 'react'
+
+const $1 = () => {
+  return <div>$0</div>
+}
+
+export default \$1
+```
