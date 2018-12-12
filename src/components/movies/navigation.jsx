@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Route, Switch, Redirect } from "react-router-dom";
-
-// components
-import Movies from "./movies";
-import Customers from "./customers";
-import Rentals from "./rentals";
-import MovieDetail from "./movieForm";
-import "../../css/movie.scss";
+import { NavLink } from "react-router-dom";
 
 export default class Navigation extends Component {
   render() {
@@ -46,20 +39,14 @@ export default class Navigation extends Component {
                   Rentals
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink to="/login" className="nav-link">
+                  Login
+                </NavLink>
+              </li>
             </ul>
           </div>
         </nav>
-
-        <div className="container-fluid mt-4">
-          <Switch>
-            <Route path="/movies/:id" component={MovieDetail} />
-            <Route path="/movies" component={Movies} />
-            <Route path="/customers" component={Customers} />
-            <Route path="/rentals" component={Rentals} />
-            <Route exact path="/" component={Movies} />
-            <Redirect to="/not-found" />
-          </Switch>
-        </div>
       </div>
     );
   }

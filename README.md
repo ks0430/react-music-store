@@ -319,6 +319,39 @@ Route[path][component] * 4
 
 This only support in react javascript, change language to reactjs.
 
+**16 - e.preventDefault()**
+
+By default, submit will cause full page load. Add `e.preventDefault()` to forbid page from full loading.
+
+```
+handleSubmit = e => {
+  e.preventDefault();
+}
+```
+
+**17 - ref**
+
+How to access element in same component?
+
+```
+username = React.createRef();
+
+return(){
+  <input id="username" type="text" ref={this.username}>Username</input>
+}
+
+handleSubmit= e =>{
+  this.username.current.value;
+}
+```
+
+**18 - autoFocus**
+
+autoFocus on first inputFiled
+
+**19 - change input to stateless element**
+By default, input has its own state, change it to controlled element, pass props outside.
+
 ## Router
 
 ### Install react router
@@ -440,12 +473,20 @@ Redirect one page to another.
   <Redirect from="/messages" to="posts" />
 ```
 
-**CLick to another page**
+**Click to another page**
 
 `push`: have history, next page
 `replace`: no history, change current page directly
 
 ## Hotkeys
+
+### VSCode
+
+| Hotkeys                     | Description                                     |
+| --------------------------- | ----------------------------------------------- |
+| `alt` + `command` + `f`     | replace                                         |
+| `alt` + `command` + `enter` | replace all                                     |
+| `shift` + `command` + `L`   | Select all occurrences of all current selection |
 
 ### React
 
