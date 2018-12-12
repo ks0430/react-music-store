@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { ButtonSelection } from "./common/buttonSelection";
 import ShoppingCart from "../../components/shoppingCart";
-import Movies from "../../components/movies";
+import Movies from "../movies/";
 import RouterDemo from "../../components/router";
 
-import { PopupSelection } from "./common/popupSelection";
+// import { PopupSelection } from "./common/popupSelection";
 
 export default class IndexSelection extends Component {
   state = {

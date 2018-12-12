@@ -311,6 +311,14 @@ createKey = (item, column) => {
 };
 ```
 
+**15 - zen coding js vs reactjs**
+
+```
+Route[path][component] * 4
+```
+
+This only support in react javascript, change language to reactjs.
+
 ## Router
 
 ### Install react router
@@ -494,3 +502,30 @@ const $1 = () => {
 
 export default \$1
 ```
+
+## Dependencies & Settings
+
+### Basic
+
+| Name  | Package Name | Description          |
+| ----- | ------------ | -------------------- |
+| React | react        | react origin package |
+| Babel | babel        | babel origin package |
+
+### Front-end
+
+| Name         | Package Name       | Description                             |
+| ------------ | ------------------ | --------------------------------------- |
+| Sass         | `node-sass`        | sass compiler                           |
+| React Router | `react-router-dom` | react router package                    |
+| Redux        | `redux`            | redux origin package                    |
+| Redux Thunk  | `redux-thunk`      | asynchronous redux action creator       |
+| Query String | `query-string`     | extract options from url to json object |
+
+### Back-end
+
+## Plugins - VSCode
+
+| Name | Description |
+| ---- | ----------- |
+
