@@ -525,6 +525,52 @@ Redirect one page to another.
 `push`: have history, next page
 `replace`: no history, change current page directly
 
+**Code review - design reuseable pattern and extract it**
+
+This is important!
+
+Let's extract form component.
+Before extract:
+
+```
+//
+state = {
+    account: {
+      username: "",
+      password: ""
+    },
+    errors: {}
+  };
+
+```
+
+1. extract controlled component, pass params in component.
+2. extract parent component ans extend it, use functions to pass params.
+
+**Rest operator**
+
+## Joi
+
+Joi is a js library that give string validations.
+
+### Install
+
+### How to use joi
+
+```
+// First: define the schema
+  schema = {
+    username: Joi.string().required(),
+    password: Joi.string().required()
+  };
+
+// Second: Use validation
+  validate = () => {
+    const result = Joi.validate(this.state.account, this.schema, { abortEarly:false });
+    console.log(result);
+  }
+```
+
 ## Hotkeys
 
 ### VSCode
@@ -609,6 +655,7 @@ export default \$1
 | Redux        | `redux`            | redux origin package                    |
 | Redux Thunk  | `redux-thunk`      | asynchronous redux action creator       |
 | Query String | `query-string`     | extract options from url to json object |
+| joi          | `joi-browser`      | Predefined validation funcs.            |
 
 ### Back-end
 
@@ -620,7 +667,7 @@ export default \$1
 
 ## Libraries
 
-| Name         | Package Name   | Description                             |
-| ------------ | -------------- | --------------------------------------- |
-| Query String | `query-string` | extract options from url to json object |
-|              |                |
+| Name         | Package Name   | Description                                       |
+| ------------ | -------------- | ------------------------------------------------- |
+| Query String | `query-string` | `?:test="test"`extract url options to json object |
+| joi          | `joi-browser`  | Predefined validation funcs.                      |

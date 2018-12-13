@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // Server
-import { getMovies } from "../../services/fakeMovieService";
-import { getGenres } from "../../services/fakeGenreService";
+import { getMovies } from "./services/fakeMovieService";
+import { getGenres } from "./services/fakeGenreService";
 
 // Components
 import Pagination from "./common/pagination";
@@ -101,6 +101,12 @@ class Movies extends Component {
             />
           </div>
           <div className="col">
+            <button
+              className="btn btn-primary"
+              onClick={() => this.props.history.push("/movies/new")}
+            >
+              New Movie
+            </button>
             <p>Showing {count} movies in the database.</p>
             <MovieTable
               movies={movie}

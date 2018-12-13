@@ -6,6 +6,7 @@ import Customers from "./customers";
 import Rentals from "./rentals";
 import MovieDetail from "./movieForm";
 import LoginForm from "./loginForm";
+import RegisterForm from "./registerForm";
 import NotFound from "./common/notFound";
 import "../../css/movie.scss";
 
@@ -17,6 +18,8 @@ export default class MovieDemo extends Component {
         <div className="container-fluid mt-4">
           <Switch>
             <Route path="/login" component={LoginForm} />
+            <Route path="/register" component={RegisterForm} />
+            <Route path="/movies/new" component={MovieDetail} />
             <Route path="/movies/:id" component={MovieDetail} />
             <Route path="/movies" component={Movies} />
             <Route path="/customers" component={Customers} />
