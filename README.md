@@ -352,6 +352,53 @@ autoFocus on first inputFiled
 **19 - change input to stateless element**
 By default, input has its own state, change it to controlled element, pass props outside.
 
+**20 - Undefined/null value cannot be use in controlled component**
+
+Pass a empty string to component.
+
+**21 - trim**
+remove white spaces
+
+**22 - Bind input value**
+
+```
+//handle onChange
+handleChange = ({ currentTarget: input }) => {
+
+  const account = { ...this.state.account };
+  account[input.name] = input.value;
+  this.setState({
+    account
+  });
+};
+
+// Input component
+<input
+  id={name}
+  type="text"
+  className="form-control"
+  name={name}
+  onChange={onChange}
+  value={value}
+/>
+
+// If doesn't set value preperty, then input will have it's own state. To be a controlled component, it'd better haven't it's own state.
+
+```
+
+**23 - && || operator**
+`&&` and `||` operrators are not the same as other languega.
+
+```
+truth && anotherVar
+return anotherVar, if truth run next
+
+truth || anotherVar
+return truth, if truth return truth
+```
+
+---
+
 ## Router
 
 ### Install react router
@@ -570,3 +617,10 @@ export default \$1
 | Name | Description |
 | ---- | ----------- |
 
+
+## Libraries
+
+| Name         | Package Name   | Description                             |
+| ------------ | -------------- | --------------------------------------- |
+| Query String | `query-string` | extract options from url to json object |
+|              |                |
