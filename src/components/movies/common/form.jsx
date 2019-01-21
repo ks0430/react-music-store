@@ -20,7 +20,6 @@ export default class Form extends Component {
   };
 
   validateProperty = ({ name, value }) => {
-    console.log("23",name,value);
     const obj = { [name]: value };
     const schema = { [name]: this.schema[name] };
     const { error } = Joi.validate(obj, schema);
