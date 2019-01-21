@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 // Toastify plugin
 import { ToastContainer } from 'react-toastify';
-import jwtDecode from 'jwt-decode';
 import Navbar from "./navigation";
 import Movies from "./movies.jsx"; // cannot be ./movies
 import Customers from "./customers";
@@ -12,6 +11,8 @@ import LoginForm from "./loginForm";
 import RegisterForm from "./registerForm";
 import NotFound from "./common/notFound";
 import Logout from './logout';
+import auth from './services/authService';
+import ProtectedRoute from './common/protectedRoute';
 import 'react-toastify/dist/ReactToastify.css';
 import "./css/app.css";
 
@@ -19,18 +20,12 @@ export default class MovieDemo extends Component {
   state = {};
 
   componentDidMount() {
-    try {
-      console.log(localStorage.getItem('token'));
-      const jwt = localStorage.getItem('token');
-      const user = jwtDecode(jwt);
-      console.log(user);
-      this.setState({user});
-    } catch(ex) {
-      console.log(ex);
-    }
+    const user = auth.getCurrentUser();
+    this.setState({user});
   }
 
   render() {
+    const { user } = this.state;
     return (
       <main>
         <ToastContainer />
@@ -39,8 +34,13 @@ export default class MovieDemo extends Component {
           <Switch>
             <Route path="/login" component={LoginForm} />
             <Route path="/register" component={RegisterForm} />
-            <Route path="/movies/:id" component={MovieDetail} />
-            <Route path="/movies" component={Movies} />
+            <ProtectedRoute 
+              path="/movies/:id" 
+              component={MovieDetail}
+            />
+            <Route path="/movies" 
+              render={ props => <Movies {...props} user={this.state.user} />}
+            />
             <Route path="/customers" component={Customers} />
             <Route path="/rentals" component={Rentals} />
             <Route path="/logout" component={Logout} />

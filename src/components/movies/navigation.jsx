@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 export default class Navigation extends Component {
   render() {
     const { user } = this.props;
+    console.log("7",user);
     return (
       <div>
         <nav className="navbar navbar-light bg-light navbar-expand-lg">

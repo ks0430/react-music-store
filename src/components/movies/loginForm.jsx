@@ -1,7 +1,8 @@
 import React from "react";
 import Form from "./common/form";
 import Joi from "joi-browser";
-import {login} from './services/authService';
+import auth from './services/authService';
+import { Redirect } from 'react-router-dom';
 
 export default class LoginForm extends Form {
   state = {
@@ -26,11 +27,10 @@ export default class LoginForm extends Form {
       // Call the server
       console.log("Submitted");
       const { data } = this.state;
-      const { data: jwt } = await login(data.username, data.password);
-      localStorage.setItem("token",jwt);
+      await auth.login(data.username, data.password);
       // Need page full loaded
-      // this.props.history.push('/');
-      window.location = '/';
+      const {state} = this.props.location;
+      window.location = state ? state.from.pathname : '/';
     } catch (ex) {
       if(ex.response && ex.response.status === 400) {
         const errors = {...this.state.errors};
@@ -41,6 +41,7 @@ export default class LoginForm extends Form {
   };
 
   render() {
+    if(auth.getCurrentUser()) return <Redirect to="/" />
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
