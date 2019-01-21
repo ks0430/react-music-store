@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import Form from "./common/form";
 import Joi from "joi-browser";
-import { getMovie, saveMovie } from "./services/fakeMovieService";
-import { getGenres } from "./services/fakeGenreService";
+// import { getMovie, saveMovie } from "./services/fakeMovieService";
+// import { getGenres } from "./services/fakeGenreService";
+
+import { getMovie, saveMovie } from './services/movieService';
+import {getGenres} from './services/genreService';
 
 export default class MovieDetail extends Form {
   state = {
@@ -35,24 +38,32 @@ export default class MovieDetail extends Form {
       .label("Rate")
   };
 
-  componentDidMount() {
-    const genres = getGenres();
+  async componentDidMount() {
+    const { data: genres } = await getGenres();
+    console.log("43", genres);
     this.setState({ genres });
 
     const movieId = this.props.match.params.id;
     console.log("44",movieId);
     if(movieId === "new") return;
 
-    const movie = getMovie(movieId);
-    if(!movieId){ 
-      console.log(movieId);
-      return this.props.history.replace("/not-found");
+
+
+    try {
+      const { data:movie } = await getMovie(movieId);
+
+      // The data returns from Restful apis do not match every page. 
+      // Create a mapToViewModel method to extract data from apis.
+      this.setState({ data: this.mapToViewModel(movie) });
+      console.log("56",this.state);
+    } catch(ex) {
+      console.log(ex.response);
+
+      if(ex.response && ex.response.status === 404) {
+        return this.props.history.replace("/not-found");
+      }
     }
 
-    // The data returns from Restful apis do not match every page. 
-    // Create a mapToViewModel method to extract data from apis.
-    this.setState({ data: this.mapToViewModel(movie) });
-    console.log("56",this.state);
   }
 
   mapToViewModel(movie) {
@@ -65,9 +76,14 @@ export default class MovieDetail extends Form {
     }
   }
   
-  doSubmit = () => {
-    saveMovie(this.state.data);
-    this.props.history.push("/movies");
+  doSubmit = async () => {
+    try{
+      await saveMovie(this.state.data);
+      console.log("Save movie successfully");
+      this.props.history.push("/movies");
+    } catch(ex) {
+      console.log(ex.response);
+    }
   };
 
 
