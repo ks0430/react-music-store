@@ -10,6 +10,8 @@ import { BrowserRouter } from "react-router-dom";
 // This is for js basic
 // require("./jsBasic/jsBasic");
 
+console.log(process.env);
+
 ReactDOM.render(
   <BrowserRouter>
     <App />
